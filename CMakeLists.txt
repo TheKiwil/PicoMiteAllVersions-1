@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.13)
 # Valid builds are PICO, PICOUSB, VGA, VGAUSB, HDMI(rp2350 only), HDMIUSB(rp2350 only), WEB
 
 set(PICOCALC true)
-#set(SDBOOT true)
+set(SDBOOT true)
+set(PICO_NO_FLASH true)
 
 # Compile for PICO 1 Board
 #set(COMPILE PICO)
@@ -161,7 +162,8 @@ target_compile_options(PicoMite PRIVATE -DNDEBUG
 										-DPICO_XOSC_STARTUP_DELAY_MULTIPLIER=64 
 										-DPICO_CLOCK_AJDUST_PERI_CLOCK_WITH_SYS_CLOCK
 										-DPICO_XOSC_STARTUP_DELAY_MULTIPLIER=64 
-										-DPICO_FLASH_SIZE_BYTES=16777216
+										#-DPICO_FLASH_SIZE_BYTES=16777216
+										-DPICO_FLASH_SIZE_BYTES=16777728
 										-DPICO_CORE1_STACK_SIZE=0x00
 										-DPICO_MALLOC_PANIC
 										-O2

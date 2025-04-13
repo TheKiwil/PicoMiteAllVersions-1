@@ -31,6 +31,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 #ifdef PICOMITEVGA 
     #ifdef rp2350
         #define MAXSUBFUN           512                     // each entry takes up 4 bytes
@@ -140,17 +141,17 @@ extern "C" {
 #ifdef rp2350
     #define MAXSUBFUN           512                     // each entry takes up 4 bytes
     #define MAXVARS             768                    // 8 + MAXVARLEN + MAXDIM * 2  (ie, 56 bytes) - these do not incl array members
-    #define HEAP_MEMORY_SIZE (208*1024) 
+    #define HEAP_MEMORY_SIZE    (208*1024)
     #define HEAPTOP 0x2006E000
 #else
     #define MAXSUBFUN           256                     // each entry takes up 4 bytes
     #define MAXVARS             480                    // 8 + MAXVARLEN + MAXDIM * 2  (ie, 56 bytes) - these do not incl array members
-    #define HEAP_MEMORY_SIZE (88*1024) 
+    #define HEAP_MEMORY_SIZE    (88*1024) 
     #define HEAPTOP 0x2003D000
 #endif
 
     #include "lwipopts_examples_common.h"
-    #define FLASH_TARGET_OFFSET (1080 * 1024) 
+    #define FLASH_TARGET_OFFSET ((1080 * 1024) + (512 * 1024))
     #define MagicKey 0x57128B1C
     #define MaxPcb 8
     #define MAX_CPU     252000
@@ -160,9 +161,9 @@ extern "C" {
 #ifdef PICOMITE
     #define MIN_CPU     48000
     #ifdef rp2350
-        #define HEAP_MEMORY_SIZE (288*1024) 
+        #define HEAP_MEMORY_SIZE    (288*1024)
         #define MAXVARS             768                     // 8 + MAXVARLEN + MAXDIM * 4  (ie, 64 bytes) - these do not incl array members
-        #define FLASH_TARGET_OFFSET (832 * 1024) 
+        #define FLASH_TARGET_OFFSET (832 * 1024)
         #define MAX_CPU     (rp2350a ? 396000 : 378000)
         #define MAXSUBFUN           512                     // each entry takes up 4 bytes
         #ifdef USBKEYBOARD
