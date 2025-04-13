@@ -151,7 +151,7 @@ extern "C" {
 #endif
 
     #include "lwipopts_examples_common.h"
-    #define FLASH_TARGET_OFFSET ((1080 * 1024) + (512 * 1024))
+    #define FLASH_TARGET_OFFSET ((1080 * 1024) + (512 * 1024)) //
     #define MagicKey 0x57128B1C
     #define MaxPcb 8
     #define MAX_CPU     252000
