@@ -1,4 +1,4 @@
-/* Based on GCC ARM embedded samples.
+/* Based on GCC ARM embedded samples .
    Defines the following symbols for use by code:
     __exidx_start
     __exidx_end
