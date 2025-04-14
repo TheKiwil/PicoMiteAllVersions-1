@@ -40,8 +40,12 @@ extern "C" {
     #define HEAP_MEMORY_SIZE (184*1024) 
 #else
         #define HEAP_MEMORY_SIZE (184*1024) 
-#endif
-        #define FLASH_TARGET_OFFSET (864 * 1024) 
+#endif 
+        #ifdef SDBOOT
+            #define FLASH_TARGET_OFFSET ((864 * 1024) + (256 * 1024))
+        #else
+            #define FLASH_TARGET_OFFSET (864 * 1024)
+        #endif
         #ifdef HDMI
             #define MAXMODES 5
             #ifdef USBKEYBOARD
@@ -71,12 +75,20 @@ extern "C" {
         #endif
     #else
         #ifdef USBKEYBOARD
-            #define FLASH_TARGET_OFFSET (848* 1024) 
+            #ifdef SDBOOT
+                #define FLASH_TARGET_OFFSET ((848 * 1024) + (256 * 1024))
+            #else
+                #define FLASH_TARGET_OFFSET (848 * 1024)
+            #endif
             #define MagicKey 0x41FAB715
             #define HEAPTOP 0x2003F000
             #define MAXVARS             480                     // 8 + MAXVARLEN + MAXDIM * 2  (ie, 56 bytes) - these do not incl array members
     #else
-            #define FLASH_TARGET_OFFSET (864 * 1024) 
+            #ifdef SDBOOT
+                #define FLASH_TARGET_OFFSET ((864 * 1024) + (256 * 1024))
+            #else
+                #define FLASH_TARGET_OFFSET (864 * 1024)
+            #endif
             #define MagicKey 0xA052A92F
             #define HEAPTOP 0x2003f000
             #define MAXVARS             480                     // 8 + MAXVARLEN + MAXDIM * 2  (ie, 56 bytes) - these do not incl array members
@@ -151,7 +163,11 @@ extern "C" {
 #endif
 
     #include "lwipopts_examples_common.h"
-    #define FLASH_TARGET_OFFSET ((1080 * 1024) + (256 * 1024)) //
+    #ifdef SDBOOT
+        #define FLASH_TARGET_OFFSET ((1080 * 1024) + (256 * 1024))
+    #else
+        #define FLASH_TARGET_OFFSET (1080 * 1024)
+    #endif
     #define MagicKey 0x57128B1C
     #define MaxPcb 8
     #define MAX_CPU     252000
@@ -163,7 +179,11 @@ extern "C" {
     #ifdef rp2350
         #define HEAP_MEMORY_SIZE    (288*1024)
         #define MAXVARS             768                     // 8 + MAXVARLEN + MAXDIM * 4  (ie, 64 bytes) - these do not incl array members
-        #define FLASH_TARGET_OFFSET (832 * 1024)
+        #ifdef SDBOOT
+            #define FLASH_TARGET_OFFSET ((832 * 1024) + (256 * 1024))
+        #else
+            #define FLASH_TARGET_OFFSET (832 * 1024)
+        #endif
         #define MAX_CPU     (rp2350a ? 396000 : 378000)
         #define MAXSUBFUN           512                     // each entry takes up 4 bytes
         #ifdef USBKEYBOARD
@@ -176,7 +196,11 @@ extern "C" {
     #else
         #define HEAP_MEMORY_SIZE (128*1024) 
         #define MAXVARS             512                     // 8 + MAXVARLEN + MAXDIM * 2  (ie, 56 bytes) - these do not incl array members
-        #define FLASH_TARGET_OFFSET (832 * 1024) 
+        #ifdef SDBOOT
+            #define FLASH_TARGET_OFFSET ((832 * 1024) + (256 * 1024))
+        #else
+            #define FLASH_TARGET_OFFSET (832 * 1024)
+        #endif
         #define MAX_CPU     420000
         #define MAXSUBFUN           256                     // each entry takes up 4 bytes
         #ifdef USBKEYBOARD

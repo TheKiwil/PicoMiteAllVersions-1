@@ -265,6 +265,8 @@ if(COMPILE STREQUAL "WEB" OR COMPILE STREQUAL "WEBRP2350" )
 endif()
 
 if(SDBOOT STREQUAL "true")
+	target_compile_options(PicoMite PRIVATE -DSDBOOT)
+	
 	if(${PICO_PLATFORM} STREQUAL "rp2040")
     	pico_set_linker_script(PicoMite ${CMAKE_SOURCE_DIR}/memmap_default_rp2040.ld)
   	elseif(${PICO_PLATFORM} MATCHES "rp2350")
