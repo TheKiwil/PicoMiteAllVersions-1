@@ -163,7 +163,7 @@ target_compile_options(PicoMite PRIVATE -DNDEBUG
 										-DPICO_CLOCK_AJDUST_PERI_CLOCK_WITH_SYS_CLOCK
 										-DPICO_XOSC_STARTUP_DELAY_MULTIPLIER=64 
 										#-DPICO_FLASH_SIZE_BYTES=16777216
-										-DPICO_FLASH_SIZE_BYTES=16777472
+										#-DPICO_FLASH_SIZE_BYTES=16777472
 										-DPICO_CORE1_STACK_SIZE=0x00
 										-DPICO_MALLOC_PANIC
 										-O2
@@ -265,5 +265,5 @@ if(COMPILE STREQUAL "WEB" OR COMPILE STREQUAL "WEBRP2350" )
 endif()
 
 if(SDBOOT STREQUAL "true")
-	pico_set_linker_script(PicoMite ${CMAKE_SOURCE_DIR}/memmap_sdcard_app.ld)
+	pico_set_linker_script(PicoMite ${CMAKE_SOURCE_DIR}/memmap_default_rp2350.ld)
 endif()
