@@ -1814,7 +1814,7 @@ void sigbus(void){
     MMPrintString("Error: Invalid address - resetting\r\n");
 	uSec(250000);
 	disable_interrupts_pico();
-//	flash_range_erase(PROGSTART, MAX_PROG_SIZE);
+	flash_range_erase(PROGSTART, MAX_PROG_SIZE);
     LoadOptions();
     if(Option.NoReset==0){
         Option.Autorun=0;

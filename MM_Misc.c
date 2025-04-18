@@ -5186,7 +5186,9 @@ void MIPS16 fun_info(void){
             uint8_t txbuf[4] = {0x9f};
             uint8_t rxbuf[4] = {0};
             disable_interrupts_pico();
+            #if !PICO_NO_FLASH
             flash_do_cmd(txbuf, rxbuf, 4);
+            #endif
             enable_interrupts_pico();
             iret= 1 << rxbuf[3];
 			targ=T_INT;

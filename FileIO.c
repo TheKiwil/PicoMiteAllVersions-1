@@ -5029,7 +5029,9 @@ void ResetOptions(bool startup)
     }
 #endif
     disable_interrupts_pico();
+    #if !PICO_NO_FLASH
     flash_do_cmd(txbuf, rxbuf, 4);
+    #endif
     Option.FlashSize= 1 << rxbuf[3];
     enable_interrupts_pico();
     SaveOptions();
